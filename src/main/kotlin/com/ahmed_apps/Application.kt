@@ -1,8 +1,11 @@
 package com.ahmed_apps
 
-import com.ahmed_apps.plugins.*
+import com.ahmed_apps.plugins.configureMonitoring
+import com.ahmed_apps.plugins.configureRouting
+import com.ahmed_apps.plugins.configureSecurity
+import com.ahmed_apps.plugins.configureSerialization
+import com.mongodb.kotlin.client.coroutine.MongoClient
 import io.ktor.server.application.*
-import org.litote.kmongo.KMongo
 
 fun main(args: Array<String>) {
     io.ktor.server.netty.EngineMain.main(args)
@@ -10,16 +13,37 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
 
-    val mongoPassword = System.getenv("MONGO_PASSWORD")
-    val databaseName = "watchy-course-database"
+    val mongoPassword = System.getenv("MONGO_PASS")
+    val databaseName = "watchy-database"
 
-    val database = KMongo.createClient(
-        connectionString =
+    val connectionString =
         "mongodb+srv://watch-course-user:$mongoPassword@cluster-watchy-course.nyitfg8.mongodb.net/$databaseName?retryWrites=true&w=majority"
-    ).getDatabase(databaseName)
+
+    val mongoClient = MongoClient.create(connectionString)
+    val database = mongoClient.getDatabase(databaseName)
 
     configureSecurity()
     configureSerialization()
     configureMonitoring()
     configureRouting()
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
