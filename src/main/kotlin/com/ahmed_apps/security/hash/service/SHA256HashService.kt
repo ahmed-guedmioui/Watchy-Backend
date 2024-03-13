@@ -1,6 +1,6 @@
 package com.ahmed_apps.security.hash.service
 
-import com.ahmed_apps.security.hash.model.Hash
+import com.ahmed_apps.security.hash.model.HashAndSalt
 import org.apache.commons.codec.binary.Hex
 import org.apache.commons.codec.digest.DigestUtils
 import java.security.SecureRandom
@@ -8,7 +8,7 @@ import java.security.SecureRandom
 class SHA256HashService : HashingService {
     override fun generateHash(
         password: String, saltLength: Int
-    ): Hash {
+    ): HashAndSalt {
 
         val salt = SecureRandom.getInstance(
             "SHA1PRNG"
@@ -17,7 +17,7 @@ class SHA256HashService : HashingService {
 
         val hash = DigestUtils.sha256Hex("$saltHex$password")
 
-        return Hash(
+        return HashAndSalt(
             hash = hash,
             salt = saltHex
         )

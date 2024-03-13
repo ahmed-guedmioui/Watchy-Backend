@@ -1,6 +1,6 @@
 package com.ahmed_apps.security.hash.model
 
-data class Hash(
+data class HashAndSalt(
     val hash: String,
     val salt: String
 )

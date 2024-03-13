@@ -1,13 +1,13 @@
 package com.ahmed_apps.security.hash.service
 
-import com.ahmed_apps.security.hash.model.Hash
+import com.ahmed_apps.security.hash.model.HashAndSalt
 
 interface HashingService {
 
     fun generateHash(
         password: String,
         saltLength: Int = 23
-    ): Hash
+    ): HashAndSalt
 
     fun verifyHash(
         password: String,
