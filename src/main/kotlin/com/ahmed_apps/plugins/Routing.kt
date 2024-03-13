@@ -1,6 +1,6 @@
 package com.ahmed_apps.plugins
 
-import com.ahmed_apps.data.user.model.dataSource.UserDataSource
+import com.ahmed_apps.data.user.dataSource.UserDataSource
 import com.ahmed_apps.route.authenticate
 import com.ahmed_apps.route.login
 import com.ahmed_apps.route.register

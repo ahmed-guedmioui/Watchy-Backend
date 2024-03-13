@@ -1,4 +1,4 @@
-package com.ahmed_apps.data.user.model.dataSource
+package com.ahmed_apps.data.user.dataSource
 
 import com.ahmed_apps.data.user.model.User
 

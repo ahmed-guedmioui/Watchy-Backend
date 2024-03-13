@@ -1,6 +1,6 @@
 package com.ahmed_apps
 
-import com.ahmed_apps.data.user.model.dataSource.MongoUserDataSource
+import com.ahmed_apps.data.user.dataSource.MongoUserDataSource
 import com.ahmed_apps.plugins.configureMonitoring
 import com.ahmed_apps.plugins.configureRouting
 import com.ahmed_apps.plugins.configureSecurity
