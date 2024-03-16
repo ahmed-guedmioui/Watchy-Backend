@@ -1,5 +1,6 @@
 package com.ahmed_apps
 
+import com.ahmed_apps.data.media.dataSource.MongoMediaDataSource
 import com.ahmed_apps.data.user.dataSource.MongoUserDataSource
 import com.ahmed_apps.plugins.configureMonitoring
 import com.ahmed_apps.plugins.configureRouting
@@ -26,6 +27,7 @@ fun Application.module() {
     val mongoClient = MongoClient.create(connectionString)
     val database = mongoClient.getDatabase(databaseName)
 
+    val mediaDataSource = MongoMediaDataSource(database)
     val userDataSource = MongoUserDataSource(database)
 
     val tokenService = JWTTokenService()
@@ -42,7 +44,11 @@ fun Application.module() {
     configureSerialization()
     configureMonitoring()
     configureRouting(
-        hashingService, userDataSource, tokenService, tokenConfig
+        mediaDataSource,
+        hashingService,
+        userDataSource,
+        tokenService,
+        tokenConfig
     )
 }
 
