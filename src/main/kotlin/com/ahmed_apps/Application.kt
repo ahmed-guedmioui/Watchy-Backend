@@ -34,7 +34,7 @@ fun Application.module() {
     val tokenConfig = TokenConfig(
         issuer = environment.config.property("jwt.issuer").getString(),
         audience = environment.config.property("jwt.audience").getString(),
-        expireDate = 30L * 1000L * 60L * 60L * 24L,
+        expireDate = 356L * 1000L * 60L * 60L * 24L,
         secret = System.getenv("JWT_SECRET")
     )
     val hashingService = SHA256HashService()
